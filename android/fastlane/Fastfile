@@ -15,11 +15,12 @@ default_platform :android
 # info which you can add here later
 lane :beta do
   # build the release variant
+  keystore_path = File.join(ENV['HOME'], 'keystores', 'signed-release-key.keystore')
   gradle(
     task: "assemble",
     build_type: "Release",
     properties: {
-      'android.injected.signing.store.file' => ENV['BITRISEIO_ANDROID_KEYSTORE_PATH'],
+      'android.injected.signing.store.file' => keystore_path,
       'android.injected.signing.store.password' => ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD'],
       'android.injected.signing.key.alias' => ENV['BITRISEIO_ANDROID_KEYSTORE_ALIAS'],
       'android.injected.signing.key.password' => ENV['BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD'],
