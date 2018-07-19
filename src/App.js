@@ -19,6 +19,10 @@ const instructions = Platform.select({
 
 type Props = {};
 class HomeScreen extends Component<Props> {
+    static navigationOptions = {
+        title: 'Home'
+    };
+
     render() {
         return (
             <View style={styles.container}>
@@ -57,6 +61,10 @@ const styles = StyleSheet.create({
 });
 
 class DetailsScreen extends Component {
+    static navigationOptions = {
+        title: 'Details'
+    };
+
     render() {
         const { navigation } = this.props;
         const itemId = navigation.getParam('itemId', 'No ID');
