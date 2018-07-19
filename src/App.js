@@ -27,7 +27,10 @@ class HomeScreen extends Component<Props> {
                 <Text style={styles.instructions}>{instructions}</Text>
                 <Button
                     title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
+                    onPress={() => this.props.navigation.navigate('Details', {
+                        itemId: 86,
+                        otherParam: 'some params',
+                    })}
                 />
             </View>
         );
@@ -55,12 +58,19 @@ const styles = StyleSheet.create({
 
 class DetailsScreen extends Component {
     render() {
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('itemId', 'No ID');
+        const otherParam = navigation.getParam('otherParam', 'default param')
         return (
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Details Screen</Text>
+                <Text>Item ID: {JSON.stringify(itemId)}</Text>
+                <Text>Other params: {JSON.stringify(otherParam)}</Text>
                 <Button
                     title="Got to Details again"
-                    onPress={() => this.props.navigation.push('Details')}
+                    onPress={() => this.props.navigation.push('Details', {
+                        itemId: Math.floor(Math.random() * 100)
+                    })}
                 />
                 <Button
                     title="Go Home"
