@@ -61,8 +61,10 @@ const styles = StyleSheet.create({
 });
 
 class DetailsScreen extends Component {
-    static navigationOptions = {
-        title: 'Details'
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: navigation.getParam('otherParam', 'A nested details screen')
+        }
     };
 
     render() {
@@ -87,6 +89,10 @@ class DetailsScreen extends Component {
                 <Button
                     title="Go back"
                     onPress={() => this.props.navigation.goBack()}
+                />
+                <Button
+                    title="Update the title"
+                    onPress={() => this.props.navigation.setParams({ otherParam: 'Updated title' })}
                 />
             </View>
         );
