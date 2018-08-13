@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
-import { SignUp } from './screens/SignUp';
-import { SignIn } from './screens/SignIn';
+import SignUp from './screens/SignUp';
+import SignIn from './screens/SignIn';
 
 export const SignedOut = StackNavigator({
     SignUp: {

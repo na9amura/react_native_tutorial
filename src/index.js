@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SignUp from './screens/SignUp';
+import { SignedOut } from './router';
 
 export default class App extends React.Component {
     render() {
-        return <SignUp />;
+        return <SignedOut />;
     }
 }
